@@ -1,0 +1,33 @@
+# Virtual Environment
+venv/
+env/
+
+# API Keys and Secrets
+.env
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+
+# Data files (we don't want to upload large files)
+data/*.pdf
+data/*.csv
+data/*.txt
+
+# Vector stores and indexes
+storage/
+*.index
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log 
