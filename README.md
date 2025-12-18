@@ -108,7 +108,7 @@ MIT License
 
 ## 👨‍�💻 Author
 
-Your Name - [GitHub Profile](https://github.com/YOUR_USERNAME)
+[GitHub Profile](https://github.com/sofiyasavanur3
 
 ## 🙏 Acknowledgments
 
