@@ -1,0 +1,23 @@
+============================================================
+INGESTION SUMMARY
+Generated: 2025-12-20T14:04:47.767734
+============================================================
+
+Total Documents: 6
+Total Characters: 6,124
+Average Document Length: 1020 chars
+
+Documents by Source:
+  • PDF: 1
+  • WEB: 1
+  • CSV: 4
+
+Sources Added:
+  • PDFS:
+    - data/pdfs
+  • URLS:
+    - https://www.llamaindex.ai/
+  • CSVS:
+    - data/databases
+
+Unique Content Pieces: 6
