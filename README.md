@@ -102,6 +102,45 @@ Instead of relying on a single data source, this system integrates:
 
 Contributions welcome! Please open an issue or submit a pull request.
 
+## 🚀 Deployment
+
+### Local Development
+```bash
+streamlit run frontend/app.py
+```
+
+### Streamlit Cloud (Recommended)
+
+1. **Push to GitHub:**
+```bash
+   git add .
+   git commit -m "feat: Prepare for deployment"
+   git push
+```
+
+2. **Deploy on Streamlit Cloud:**
+   - Go to [share.streamlit.io](https://share.streamlit.io)
+   - Sign in with GitHub
+   - Click "New app"
+   - Select your repository: `multi-source-rag`
+   - Main file path: `frontend/app.py`
+   - Click "Deploy"
+
+3. **Add Secrets:**
+   - In Streamlit Cloud dashboard → "Settings" → "Secrets"
+   - Add: `OPENAI_API_KEY = "sk-your-key-here"`
+   - Save
+
+4. **Done!** Your app is live at: `https://your-app.streamlit.app`
+
+### Docker (Alternative)
+```bash
+docker build -t multi-source-rag .
+docker run -p 8501:8501 --env-file .env multi-source-rag
+```
+
+See [Docker Documentation](./docs/DOCKER.md) for details.
+
 ## 📝 License
 
 MIT License

@@ -16,6 +16,8 @@ FEATURES:
 - Knowledge base statistics
 """
 
+
+
 import streamlit as st
 import sys
 from pathlib import Path
@@ -23,7 +25,19 @@ import os
 from dotenv import load_dotenv
 import tempfile
 import shutil
-
+# Load environment - works both locally and on Streamlit Cloud
+# WHY? Streamlit Cloud uses secrets, local uses .env
+try:
+    # Try Streamlit secrets first (for deployment)
+    import streamlit as st
+    if hasattr(st, 'secrets') and 'OPENAI_API_KEY' in st.secrets:
+        os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
+    else:
+        # Fall back to .env file (for local development)
+        load_dotenv()
+except:
+    # Fall back to .env file
+    load_dotenv()
 # Add project root to path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
