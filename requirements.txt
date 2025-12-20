@@ -24,7 +24,7 @@ sentence-transformers==2.2.2
 rank-bm25==0.2.2
 
 # Web Framework
-streamlit==1.28.0
+streamlit==1.29.0
 gradio==3.50.0
 
 # Utilities
@@ -34,3 +34,4 @@ fastapi==0.104.0
 
 # Graph-based retrieval
 networkx==3.2
+
