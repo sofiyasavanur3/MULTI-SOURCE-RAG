@@ -1,12 +1,13 @@
 # Core app
 streamlit==1.31.1
 
-# LlamaIndex core + OpenAI integration
+# LlamaIndex core (REQUIRED)
+llama-index-core==0.10.11
 llama-index==0.10.11
 llama-index-llms-openai==0.1.7
 llama-index-embeddings-openai==0.1.7
 
-# OpenAI stack (compatible versions)
+# OpenAI stack (compatible)
 openai==1.12.0
 tiktoken==0.6.0
 
