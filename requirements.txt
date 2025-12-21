@@ -1,11 +1,23 @@
-streamlit==1.29.0
-openai==1.54.0
+# Core app
+streamlit==1.31.1
+
+# LlamaIndex core + OpenAI integration
 llama-index==0.10.11
-pypdf==3.17.0
-pandas==2.1.4
-beautifulsoup4==4.12.2
+llama-index-llms-openai==0.1.7
+llama-index-embeddings-openai==0.1.7
+
+# OpenAI stack (compatible versions)
+openai==1.12.0
+tiktoken==0.6.0
+
+# Dependency compatibility
+pydantic==2.6.4
+typing-extensions==4.9.0
+
+# Utilities
+python-dotenv==1.0.1
 requests==2.31.0
-faiss-cpu==1.7.4
+beautifulsoup4==4.12.2
+pandas==2.1.4
+pypdf==3.17.0
 rank-bm25==0.2.2
-python-dotenv==1.0.0
-python-multipart==0.0.6
