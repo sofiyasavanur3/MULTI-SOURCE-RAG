@@ -41,7 +41,7 @@ if not os.getenv("OPENAI_API_KEY"):
     )
 
 from typing import List, Optional
-from llama_index.core import (
+from llama_index import (
     VectorStoreIndex,
     StorageContext,
     load_index_from_storage,
