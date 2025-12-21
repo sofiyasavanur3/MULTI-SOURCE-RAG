@@ -32,3 +32,5 @@ Thumbs.db
 # Logs
 *.log .streamlit/secrets.toml
 .streamlit/secrets.toml
+.streamlit/secrets.toml.example
+
