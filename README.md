@@ -1,155 +1,151 @@
-# 🚀 Advanced Multi-Source RAG for Enterprise Knowledge Base
+Multi-Source RAG System (Enterprise Knowledge Assistant)
 
-An enterprise-grade Retrieval-Augmented Generation (RAG) system that ingests data from multiple sources (PDFs, websites, structured databases), uses advanced retrieval techniques, and provides accurate answers with source citations.
+Live App:
+https://multi-source-rag-uerfb5u3b39mhjhipt5o.streamlit.app
 
-## 🎯 Features
+An enterprise-grade Retrieval-Augmented Generation (RAG) system that answers questions using internal documents with source citations, built using LlamaIndex + OpenAI and deployed on Streamlit Cloud.
 
-- **Multi-Source Ingestion**: PDFs, websites, CSV/databases
-- **Advanced Retrieval**: Vector search, sentence window retrieval, graph-based knowledge retrieval
-- **Intelligent Fusion**: Combines and re-ranks results from multiple retrievers
-- **Source Citations**: Every answer includes references to source documents
-- **Web Interface**: User-friendly Streamlit/Gradio interface
-- **Production-Ready**: Deployable on AWS EC2/Azure
 
-## 🛠️ Tech Stack
+🔍 What Problem This Solves
+LLMs don’t know company-specific data.
+This system lets users ask natural language questions over PDFs, CSVs, and web content — and get grounded answers, not hallucinations.
 
-- **Framework**: LlamaIndex, LangChain
-- **LLM**: OpenAI GPT-3.5/4 (or Claude)
-- **Vector Database**: FAISS / Pinecone
-- **Frontend**: Streamlit
-- **Backend**: Python + FastAPI
-- **Deployment**: Docker + AWS/Azure
+🧠 How It Works (High Level)
+Documents are ingested and chunked
+Chunks are converted into embeddings
+Relevant chunks are retrieved using vector + keyword search
+Results are re-ranked
+An LLM generates an answer with citations
 
-## 📦 Installation
+✨ Key Capabilities
+Multi-source ingestion (PDF, CSV, Web)
+Hybrid retrieval (Vector + BM25)
+Source-aware answers (citations)
+Streamlit web interface
+Cloud-ready deployment
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/YOUR_USERNAME/multi-source-rag.git
-cd multi-source-rag
-```
+🛠️ Tech Stack
+Python 3.11
+LlamaIndex (RAG orchestration)
+OpenAI GPT-3.5 / GPT-4
+Streamlit (UI + deployment)
+Hybrid Retrieval (Vector + BM25)
 
-### 2. Create virtual environment
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
+🎯 Why This Matters
+Reduces hallucinations
+Scales to enterprise documents
+Reusable RAG architecture
+Production-ready deployment
 
-### 3. Install dependencies
-```bash
-pip install -r requirements.txt
-```
+👩‍💻 Author
+Sofiya Savaanur
+GitHub: https://github.com/sofiyasavaanur3
 
-### 4. Set up environment variables
-```bash
-cp .env.example .env
-# Edit .env and add your API keys
-```
+2️⃣ Architecture Diagrams
+These are simple, explainable diagrams you can draw on a whiteboard or explain verbally.
 
-## 🚀 Quick Start
+🔹 Overall System Architecture
+┌─────────────────────────────┐
+│        User (Browser)       │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│     Streamlit Frontend      │
+│  - File Upload              │
+│  - Question Input           │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│     Ingestion Layer         │
+│  - PDF Parser               │
+│  - CSV Loader               │
+│  - Web Scraper              │
+│  - Text Chunking            │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│   Embedding Generation      │
+│  (OpenAI Embeddings API)    │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│     Vector Index Storage    │
+│  (Persistent Storage)       │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│     Retrieval Layer         │
+│  - Vector Search            │
+│  - BM25 Keyword Search      │
+│  - Hybrid Fusion            │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│     Re-Ranking Layer        │
+│  - Relevance Scoring        │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│     LLM Answer Generation   │
+│  (OpenAI GPT-3.5 / GPT-4)   │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│   Answer + Source Citations │
+└─────────────────────────────┘
 
-### Basic Usage
-```bash
-python src/simple_rag.py
-```
+🔹 RAG Query Flow (Step-by-Step)
+User Question
+      │
+      ▼
+Convert Question → Embedding
+      │
+      ▼
+Retrieve Top-K Chunks
+(Vector + BM25)
+      │
+      ▼
+Re-Rank Results
+      │
+      ▼
+Send Context to LLM
+      │
+      ▼
+Generate Answer
+(with citations)
 
-### Run Web Interface
-```bash
-streamlit run frontend/app.py
-```
+🔹 Why Hybrid Retrieval (Interview Gold)
+Vector Search  → Semantic meaning
+BM25 Search   → Exact keywords
+Hybrid Fusion → Higher accuracy
 
-## 📊 Project Structure
-```
-Multi-Source-RAG/
-├── data/              # Data sources
-├── src/               # Source code
-│   ├── ingestion/     # Data ingestion modules
-│   ├── retrieval/     # Retrieval strategies
-│   ├── ranking/       # Re-ranking logic
-│   └── api/           # Backend API
-├── frontend/          # Web interface
-├── storage/           # Vector stores
-└── tests/             # Unit tests
-```
 
-## 🎓 Key Concepts
+Details:
 
-### What is RAG?
-Retrieval-Augmented Generation combines the power of large language models with your own data, allowing the AI to answer questions based on your specific documents.
+Vector search understands meaning.
+BM25 catches exact terms.
+Hybrid retrieval reduces missed answers.
 
-### Multi-Source Approach
-Instead of relying on a single data source, this system integrates:
-- PDFs (research papers, reports)
-- Websites (documentation, blogs)
-- Structured data (CSV files, databases)
+🔹 Deployment Architecture
+GitHub Repository
+       │
+       ▼
+Streamlit Cloud
+       │
+       ├── Python Runtime (3.11)
+       ├── Dependency Install
+       ├── Secrets Management
+       │
+       ▼
+Live Web App
 
-### Advanced Retrieval
-- **Vector Search**: Semantic similarity search
-- **Sentence Window**: Context-aware retrieval
-- **Graph-Based**: Knowledge graph traversal
 
-## 📈 Roadmap
-
-- [x] Basic RAG implementation
-- [x] PDF ingestion
-- [ ] Website scraping
-- [ ] CSV/database integration
-- [ ] Multiple retrieval strategies
-- [ ] Fusion and re-ranking
-- [ ] Web interface
-- [ ] Deployment on cloud
-
-## 🤝 Contributing
-
-Contributions welcome! Please open an issue or submit a pull request.
-
-## 🚀 Deployment
-
-### Local Development
-```bash
-streamlit run frontend/app.py
-```
-
-### Streamlit Cloud (Recommended)
-
-1. **Push to GitHub:**
-```bash
-   git add .
-   git commit -m "feat: Prepare for deployment"
-   git push
-```
-
-2. **Deploy on Streamlit Cloud:**
-   - Go to [share.streamlit.io](https://share.streamlit.io)
-   - Sign in with GitHub
-   - Click "New app"
-   - Select your repository: `multi-source-rag`
-   - Main file path: `frontend/app.py`
-   - Click "Deploy"
-
-3. **Add Secrets:**
-   - In Streamlit Cloud dashboard → "Settings" → "Secrets"
-   - Add: `OPENAI_API_KEY = "sk-your-key-here"`
-   - Save
-
-4. **Done!** Your app is live at: `https://your-app.streamlit.app`
-
-### Docker (Alternative)
-```bash
-docker build -t multi-source-rag .
-docker run -p 8501:8501 --env-file .env multi-source-rag
-```
-
-See [Docker Documentation](./docs/DOCKER.md) for details.
-
-## 📝 License
-
-MIT License
-
-## 👨‍�💻 Author
-
-[GitHub Profile](https://github.com/sofiyasavanur3
-
-## 🙏 Acknowledgments
-
-- Built with [LlamaIndex](https://www.llamaindex.ai/)
-- Inspired by enterprise RAG systems
+No Docker. No servers. Low operational cost.
